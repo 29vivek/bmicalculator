@@ -134,7 +134,6 @@ class _InputScreenState extends State<InputScreen> {
                   child: ReusableCard(
                     cardChild: IconsTexts(
                       heading: 'WEIGHT',
-                      value: weight,
                       units: ' kg',
                     ),
                   ),
@@ -143,7 +142,6 @@ class _InputScreenState extends State<InputScreen> {
                   child: ReusableCard(
                     cardChild: IconsTexts(
                       heading: 'AGE',
-                      value: age,
                       units: ' y',
                     ),
                   ),
