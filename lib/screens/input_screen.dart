@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:bmicalc/widgets/reusable_card.dart';
 import 'package:bmicalc/widgets/icon_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import '../constants.dart';
+import 'package:bmicalc/widgets/icons_texts.dart';
+import 'package:bmicalc/constants.dart';
 
 class InputScreen extends StatefulWidget {
   @override
@@ -131,12 +132,20 @@ class _InputScreenState extends State<InputScreen> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    ,
+                    cardChild: IconsTexts(
+                      heading: 'WEIGHT',
+                      value: weight,
+                      units: ' kg',
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-
+                    cardChild: IconsTexts(
+                      heading: 'AGE',
+                      value: age,
+                      units: ' y',
+                    ),
                   ),
                 ),
               ],
@@ -160,7 +169,7 @@ class _InputScreenState extends State<InputScreen> {
                 ),
               ),
               onPressed: () {
-                
+
               },
             ),
           ),    
