@@ -1,6 +1,6 @@
-const int background_color = 0xff212121;
-const int accent_color = 0xff0092ca;
-const int overlay_accent_color = 0x480092ca;
-const int enabled_color = 0xffffffff;
-const int card_color = 0xff000000;
-const int disabled_color = 0xff757575;
+const int kBackgroundColor = 0xff212121;
+const int kAccentColor = 0xff0092ca;
+const int kOverlayAccentColor = 0x480092ca;
+const int kEnabledColor = 0xffffffff;
+const int kCardColor = 0xff000000;
+const int kDisabledColor = 0xff757575;

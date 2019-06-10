@@ -22,7 +22,7 @@ class IconsTexts extends StatelessWidget {
                 letterSpacing: 3.0,
                 fontSize: 16.0,
                 fontWeight: FontWeight.w300,
-                color: Color(enabled_color),
+                color: Color(kEnabledColor),
               ),
             ),
             Row(
@@ -52,7 +52,7 @@ class IconsTexts extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.add),
                   iconSize: 35.0,
-                  color: Color(accent_color),
+                  color: Color(kAccentColor),
                   onPressed: () {
                     if(units.trim().toLowerCase() == 'y')
                       model.incrementAge();
@@ -63,7 +63,7 @@ class IconsTexts extends StatelessWidget {
                 IconButton(
                   icon:Icon(Icons.remove),
                   iconSize: 35.0,
-                  color: Color(accent_color),
+                  color: Color(kAccentColor),
                   onPressed: () {
                     if(units.trim().toLowerCase() == 'y')
                       model.decrementAge();

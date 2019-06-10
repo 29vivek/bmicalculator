@@ -29,8 +29,10 @@ class DataModel extends Model {
   }
 
   void decrementAge() {
-    _age--;
-    notifyListeners();
+   if(_age > 0) {
+      _age--;
+      notifyListeners();
+    }
   }
 
   void incrementWeight() {
@@ -39,7 +41,9 @@ class DataModel extends Model {
   }
 
   void decrementWeight() {
-    _weight--;
-    notifyListeners();
+    if(_weight > 0) {
+      _weight--;
+      notifyListeners();
+    }
   }
 }

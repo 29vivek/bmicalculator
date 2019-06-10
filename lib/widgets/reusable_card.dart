@@ -18,9 +18,9 @@ class ReusableCard extends StatelessWidget {
         margin: EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          color: cardColor ?? Color(card_color),
+          color: cardColor ?? Color(kCardColor),
           boxShadow: [BoxShadow(
-            color: Color(card_color),
+            color: Color(kCardColor),
             blurRadius: 10,
             offset: Offset(1, 4),
           )],

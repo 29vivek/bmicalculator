@@ -6,7 +6,7 @@ import 'package:bmicalc/widgets/icons_texts.dart';
 import 'package:bmicalc/constants.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:bmicalc/models/data_model.dart';
-
+import 'package:bmicalc/screens/result_screen.dart';
 
 class InputScreen extends StatelessWidget{
 
@@ -30,11 +30,11 @@ class InputScreen extends StatelessWidget{
                           onPressed: () {
                             model.toggleGender(true);                  
                           },
-                          cardColor: model.isMale ? Color(accent_color) : Color(card_color),
+                          cardColor: model.isMale ? Color(kAccentColor) : Color(kCardColor),
                           cardChild: IconText(
                             MdiIcons.genderMale, 'MALE',
-                            iconColor: model.isMale ? Color(enabled_color) : Color(disabled_color),
-                            textColor: model.isMale ? Color(enabled_color) : Color(disabled_color),
+                            iconColor: model.isMale ? Color(kEnabledColor) : Color(kDisabledColor),
+                            textColor: model.isMale ? Color(kEnabledColor) : Color(kDisabledColor),
                           ),
                         ),
                       ),
@@ -43,11 +43,11 @@ class InputScreen extends StatelessWidget{
                           onPressed: () {
                             model.toggleGender(false);
                           },
-                          cardColor: !model.isMale ? Color(accent_color) : Color(card_color),
+                          cardColor: !model.isMale ? Color(kAccentColor) : Color(kCardColor),
                           cardChild: IconText(
                             MdiIcons.genderFemale, 'FEMALE',
-                            iconColor: !model.isMale ? Color(enabled_color) : Color(disabled_color),
-                            textColor: !model.isMale ? Color(enabled_color) : Color(disabled_color),
+                            iconColor: !model.isMale ? Color(kEnabledColor) : Color(kDisabledColor),
+                            textColor: !model.isMale ? Color(kEnabledColor) : Color(kDisabledColor),
                           ),
                         ),
                       ),
@@ -93,12 +93,12 @@ class InputScreen extends StatelessWidget{
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: Color(enabled_color),
-                      inactiveTrackColor: Color(disabled_color),
-                      thumbColor: Color(accent_color),
+                      activeTrackColor: Color(kEnabledColor),
+                      inactiveTrackColor: Color(kDisabledColor),
+                      thumbColor: Color(kAccentColor),
                       thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
                       overlayShape: RoundSliderOverlayShape(overlayRadius: 24.0),
-                      overlayColor: Color(overlay_accent_color),
+                      overlayColor: Color(kOverlayAccentColor),
                     ),
                     child: Slider(
                       min: 120.0,
@@ -139,7 +139,7 @@ class InputScreen extends StatelessWidget{
           Expanded(
             flex: 3,
             child: ReusableCard(
-              cardColor: Color(accent_color),
+              cardColor: Color(kAccentColor),
               cardChild: SizedBox.expand(
                 child: Center(
                   child: Text(
@@ -147,14 +147,17 @@ class InputScreen extends StatelessWidget{
                     style: TextStyle(
                         fontSize: 16.0,
                         letterSpacing: 3.0,
-                        color: Color(enabled_color),
+                        color: Color(kEnabledColor),
                         fontWeight: FontWeight.w300,
                     ),
                   ),
                 ),
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/result');
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => ResultScreen())
+                );
               },
             ),
           ),    
