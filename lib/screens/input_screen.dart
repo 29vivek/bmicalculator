@@ -4,21 +4,11 @@ import 'package:bmicalc/widgets/icon_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:bmicalc/widgets/icons_texts.dart';
 import 'package:bmicalc/constants.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:bmicalc/models/data_model.dart';
 
-class InputScreen extends StatefulWidget {
-  @override
-  State<InputScreen> createState() {
-    return _InputScreenState();
-  }
 
-}
-
-class _InputScreenState extends State<InputScreen> {
-
-  double sliderValue = 170.0;
-  double age = 18;
-  double weight = 50;
-  bool isMale = true;
+class InputScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
@@ -34,35 +24,40 @@ class _InputScreenState extends State<InputScreen> {
             flex: 7,
             child: Row(
               children: <Widget>[
-                Expanded(
-                  child: ReusableCard(
-                    onPressed: () {
-                      setState(() {
-                        isMale = true;
-                      });
-                    },
-                    cardColor: isMale ? Color(accent_color) : Color(card_color),
-                    cardChild: IconText(
-                      MdiIcons.genderMale, 'MALE',
-                      iconColor: isMale ? Color(enabled_color) : Color(disabled_color),
-                      textColor: isMale ? Color(enabled_color) : Color(disabled_color),
-                    ),
-                  ),
+                ScopedModelDescendant<DataModel>(
+                  builder: (BuildContext context, Widget child, DataModel model) {
+                    return Expanded(
+                      child: ReusableCard(
+                        onPressed: () {
+                          model.toggleGender(true);
+                          
+                        },
+                        cardColor: model.isMale ? Color(accent_color) : Color(card_color),
+                        cardChild: IconText(
+                          MdiIcons.genderMale, 'MALE',
+                          iconColor: model.isMale ? Color(enabled_color) : Color(disabled_color),
+                          textColor: model.isMale ? Color(enabled_color) : Color(disabled_color),
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                Expanded(
-                  child: ReusableCard(
-                    onPressed: () {
-                      setState(() {
-                        isMale = false;
-                      });
-                    },
-                    cardColor: !isMale? Color(accent_color) : Color(card_color),
-                    cardChild: IconText(
-                      MdiIcons.genderFemale, 'FEMALE',
-                      iconColor: !isMale ? Color(enabled_color) : Color(disabled_color),
-                      textColor: !isMale ? Color(enabled_color) : Color(disabled_color),
-                    ),
-                  ),
+                ScopedModelDescendant<DataModel>(
+                  builder: (BuildContext context, Widget child, DataModel model) {
+                    return Expanded(
+                      child: ReusableCard(
+                        onPressed: () {
+                          model.toggleGender(false);
+                        },
+                        cardColor: !model.isMale ? Color(accent_color) : Color(card_color),
+                        cardChild: IconText(
+                          MdiIcons.genderFemale, 'FEMALE',
+                          iconColor: !model.isMale ? Color(enabled_color) : Color(disabled_color),
+                          textColor: !model.isMale ? Color(enabled_color) : Color(disabled_color),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -87,7 +82,7 @@ class _InputScreenState extends State<InputScreen> {
                     textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
                       Text(
-                        '${sliderValue.floor() }',
+                        '${ScopedModel.of<DataModel>(context).height.floor() }',
                         style: TextStyle(
                           fontSize: 35.0,
                           fontWeight: FontWeight.w600,
@@ -114,11 +109,9 @@ class _InputScreenState extends State<InputScreen> {
                     child: Slider(
                       min: 120.0,
                       max: 240.0,
-                      value: sliderValue,
+                      value: ScopedModel.of<DataModel>(context).height,
                       onChanged: (double value) {
-                        setState(() {
-                          sliderValue = value;
-                        });
+                        ScopedModel.of<DataModel>(context, rebuildOnChange:true).changeHeight(value);
                       },
                     ),
                   ),

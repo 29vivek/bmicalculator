@@ -49,7 +49,7 @@ class IconsTexts extends StatelessWidget {
           children: <Widget>[
             IconButton(
               icon: Icon(Icons.add),
-              iconSize: 30.0,
+              iconSize: 35.0,
               color: Color(accent_color),
               onPressed: () {
                 if(units.trim().toLowerCase() == 'y')
@@ -60,7 +60,7 @@ class IconsTexts extends StatelessWidget {
             ),
             IconButton(
               icon:Icon(Icons.remove),
-              iconSize: 30.0,
+              iconSize: 35.0,
               color: Color(accent_color),
               onPressed: () {
                 if(units.trim().toLowerCase() == 'y')
