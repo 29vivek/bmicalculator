@@ -12,7 +12,6 @@ class InputScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI Calculator'),
@@ -22,44 +21,39 @@ class InputScreen extends StatelessWidget{
         children: <Widget>[
           Expanded(
             flex: 7,
-            child: Row(
-              children: <Widget>[
-                ScopedModelDescendant<DataModel>(
-                  builder: (BuildContext context, Widget child, DataModel model) {
-                    return Expanded(
-                      child: ReusableCard(
-                        onPressed: () {
-                          model.toggleGender(true);
-                          
-                        },
-                        cardColor: model.isMale ? Color(accent_color) : Color(card_color),
-                        cardChild: IconText(
-                          MdiIcons.genderMale, 'MALE',
-                          iconColor: model.isMale ? Color(enabled_color) : Color(disabled_color),
-                          textColor: model.isMale ? Color(enabled_color) : Color(disabled_color),
+            child: ScopedModelDescendant<DataModel>(
+                builder: (BuildContext context, Widget child, DataModel model) {
+                  return Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: ReusableCard(
+                          onPressed: () {
+                            model.toggleGender(true);                  
+                          },
+                          cardColor: model.isMale ? Color(accent_color) : Color(card_color),
+                          cardChild: IconText(
+                            MdiIcons.genderMale, 'MALE',
+                            iconColor: model.isMale ? Color(enabled_color) : Color(disabled_color),
+                            textColor: model.isMale ? Color(enabled_color) : Color(disabled_color),
+                          ),
                         ),
                       ),
-                    );
-                  },
-                ),
-                ScopedModelDescendant<DataModel>(
-                  builder: (BuildContext context, Widget child, DataModel model) {
-                    return Expanded(
-                      child: ReusableCard(
-                        onPressed: () {
-                          model.toggleGender(false);
-                        },
-                        cardColor: !model.isMale ? Color(accent_color) : Color(card_color),
-                        cardChild: IconText(
-                          MdiIcons.genderFemale, 'FEMALE',
-                          iconColor: !model.isMale ? Color(enabled_color) : Color(disabled_color),
-                          textColor: !model.isMale ? Color(enabled_color) : Color(disabled_color),
+                      Expanded(
+                        child: ReusableCard(
+                          onPressed: () {
+                            model.toggleGender(false);
+                          },
+                          cardColor: !model.isMale ? Color(accent_color) : Color(card_color),
+                          cardChild: IconText(
+                            MdiIcons.genderFemale, 'FEMALE',
+                            iconColor: !model.isMale ? Color(enabled_color) : Color(disabled_color),
+                            textColor: !model.isMale ? Color(enabled_color) : Color(disabled_color),
+                          ),
                         ),
                       ),
-                    );
-                  },
-                ),
-              ],
+                    ],
+                  );
+                },
             ),
           ),
           Expanded(
@@ -160,7 +154,7 @@ class InputScreen extends StatelessWidget{
                 ),
               ),
               onPressed: () {
-
+                Navigator.pushNamed(context, '/result');
               },
             ),
           ),    
